@@ -5,13 +5,15 @@ import {Login} from 'react-facebook';
 
 import io from 'socket.io-client';
 
+import {iourl} from 'static/configs/static';
+
 import {LoginButton} from '../../Assets/LoginButton';
 
 class LoginPage extends React.Component {
   constructor() {
     super();
     this.bindAllMethods();
-    window.socket = window.socket || io('localhost:80');
+    window.socket = window.socket || io(iourl);
     window.socket.on('userExists', (data) => {
       console.log(data);
       if (data.exists) {

@@ -7,6 +7,8 @@ import {Row} from 'yui-md/lib/Row';
 import {Col} from 'yui-md/lib/Col';
 import {Button} from 'yui-md/lib/Button';
 
+import {iourl} from 'static/configs/static';
+
 import {sexOptions, ageOptions, raceOptions, livingOptions,educationOptions,
   workStatusOptions, citizenshipOptions, disabilityOptions} from './options';
 
@@ -18,7 +20,7 @@ class NewUser extends React.Component {
       newUserData: {
       }
     };
-    window.socket = window.socket || io('localhost:80');
+    window.socket = window.socket || io(iourl);
     window.socket.on('redirectHome', (data) => {
       this.props.history.push('/home');
     });

@@ -13,12 +13,13 @@ import {Button} from 'yui-md/lib/Button';
 const _u = require('underscore');
 
 var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+import {iourl} from 'static/configs/static';
 
 class Transactions extends React.Component {
   constructor() {
     super();
     this.bindAllMethods();
-    window.socket = window.socket || io('localhost:80');
+    window.socket = window.socket || io(iourl);
     window.socket.on('redirectHome', (data) => {
       this.props.history.push('/home');
     });
