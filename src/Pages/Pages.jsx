@@ -30,6 +30,7 @@ class Pages extends React.Component {
           <Route path='/home' component={Home}/>
           <Route path='/newgoal' component={NewGoal}/>
           <Route path='/goals' component={Goals}/>
+          <Route path='/goal/:id' component={NewGoal}/>
           <Route path='/' component={LoginPage}/>
         </Switch>
       </div>

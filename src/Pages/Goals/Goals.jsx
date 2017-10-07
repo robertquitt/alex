@@ -33,7 +33,7 @@ class Goals extends React.Component {
       var goal = goals[i];
       goalComponents.push(
         <Card key={i}>
-          <CardTextArea>
+          <CardTextArea onClick={() => this.props.history.push('/goal/' + goal.id)}>
             <div>
               <p>
                 <b>Goal: </b>{goal.goal}&emsp;&emsp;&emsp;
@@ -60,9 +60,11 @@ class Goals extends React.Component {
           <Col xs={0} sm={2}/>
         </Row>
         <div style={{height: '30px'}}/>
-        <Button className={'centered'} onClick={() => this.props.history.push('/home')}>
-          Home
-        </Button>
+        <Row>
+          <Button className={'centered'} onClick={() => this.props.history.push('/home')}>
+            Home
+          </Button>
+        </Row>
       </div>
     );
   }

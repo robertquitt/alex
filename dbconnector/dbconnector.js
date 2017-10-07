@@ -56,7 +56,6 @@ class DB {
       callback();
     });
   }
-
   //Callback signature: function(goal)
   getGoal(goal, callback) {
     this.mongoClient.connect(this.url, function(err, db) {
@@ -65,18 +64,64 @@ class DB {
       callback();
     });
   }
-
   //Callback signature: function(goals)
   getGoals(userId, callback) {
     this.mongoClient.connect(this.url, function(err, db) {
       db.collection('goals').find().toArray().then((goals) => callback(goals));
     });
   }
-
   //Callback signature: function()
   editGoal(goal, callback) {
     this.mongoClient.connect(this.url, function(err, db) {
       db.collection('goals').findOneAndReplace({id: goal.id, userId: goal.userId}, goal);
+      db.close();
+      callback();
+    });
+  }
+  //Callback signature: function()
+  deleteGoal(goal, callback) {
+    this.mongoClient.connect(this.url, function(err, db) {
+      db.collection('goals').findOneAndDelete({id: goal.id, userId: goal.userId}, goal);
+      db.close();
+      callback();
+    });
+  }
+
+  //Callback signature: function()
+  addTransaction(transaction, callback) {
+    this.mongoClient.connect(this.url, function(err, db) {
+      transaction.id = new Date().getTime();
+      db.collection('transactions').insertOne(transaction);
+      db.close();
+      callback();
+    });
+  }
+  //Callback signature: function(transaction)
+  getTransaction(transaction, callback) {
+    this.mongoClient.connect(this.url, function(err, db) {
+      db.collection('transactions').findOne({id: transaction.id, userId: transaction.userId}, {}).then((transaction) => callback(transaction));
+      db.close();
+      callback();
+    });
+  }
+  //Callback signature: function(goals)
+  getTransactions(userId, callback) {
+    this.mongoClient.connect(this.url, function(err, db) {
+      db.collection('transactions').find().toArray().then((goals) => callback(goals));
+    });
+  }
+  //Callback signature: function()
+  editTransaction(transaction, callback) {
+    this.mongoClient.connect(this.url, function(err, db) {
+      db.collection('transactions').findOneAndReplace({id: transaction.id, userId: transaction.userId}, transaction);
+      db.close();
+      callback();
+    });
+  }
+  //Callback signature: function()
+  deleteTransaction(transaction, callback) {
+    this.mongoClient.connect(this.url, function(err, db) {
+      db.collection('transactions').findOneAndDelete({id: transaction.id, userId: transaction.userId}, transaction);
       db.close();
       callback();
     });

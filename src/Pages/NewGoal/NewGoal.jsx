@@ -18,20 +18,28 @@ class NewGoal extends React.Component {
   constructor(props) {
     super(props);
     this.bindAllMethods();
+    window.socket = window.socket || io('localhost:9080');
+    window.socket.on('redirectHome', (data) => {
+      this.props.history.push('/home');
+    });
+    if (props.match && props.match.params && props.match.params.id) {
+      this.editing = true;
+    }
+    if (props.editing || this.editing) {
+      var id = parseInt(props.match.params.id);
+      window.socket.emit('getGoal', {id: id, userId: FB.getUserID()});
+    }
+    window.socket.on('getGoal', (goal) => {
+      if (goal) {this.setState({newGoalData: goal})}
+    });
+    window.socket.on('redirectGoals', () => {
+      this.props.history.push('/goals');
+    });
     this.state = {
       newGoalData: {
         type: 'personal'
       }
     };
-    window.socket = window.socket || io('localhost:9080');
-    window.socket.on('redirectHome', (data) => {
-      this.props.history.push('/home');
-    });
-    if (props.editing) { window.socket.emit('getGoal', {id: id});
-    }
-    window.socket.on('getGoal', (goal) => {
-      this.setState(newGoalData: goal);
-    });
   }
 
   tryCreateNewGoal() {
@@ -46,6 +54,12 @@ class NewGoal extends React.Component {
     window.socket.emit('editGoal', newGoalData);
   }
 
+  tryDeleteGoal() {
+    let newGoalData = this.state.newGoalData;
+    newGoalData.userId = FB.getUserID();
+    window.socket.emit('deleteGoal', newGoalData);
+  }
+
   changeValue(field, newValue) {
     let newGoalData = this.state.newGoalData;
     newGoalData[field] = newValue;
@@ -55,17 +69,15 @@ class NewGoal extends React.Component {
   render() {
     return (
       <div className={'new-goal'}>
-        <h3 className={'centered'}>Create a New Goal</h3>
+        <h3 className={'centered'}>{this.props.editing || this.editing ? 'Edit Goal' : 'Create a New Goal'}</h3>
         <Row>
           <Col xs={12}>
-            <Input label={'Goal'} changeValue={(newValue) => this.changeValue('goal', newValue)}>
-              {this.state.newGoalData.item}
-            </Input>
+            <Input label={'Goal'} value={this.state.newGoalData.goal}
+              changeValue={(newValue) => this.changeValue('goal', newValue)}/>
           </Col>
           <Col xs={6}>
-            <Input label={'Cost'} changeValue={(newValue) => this.changeValue('cost', newValue)}>
-              {this.state.newGoalData.cost}
-            </Input>
+            <Input label={'Cost'} value={this.state.newGoalData.cost}
+              changeValue={(newValue) => this.changeValue('cost', newValue)}/>
           </Col>
           <Col xs={6}>
             <Dropdown label={'Type'} options={goalCategories} selected={this.state.newGoalData.type}
@@ -74,9 +86,20 @@ class NewGoal extends React.Component {
         </Row>
         <div style={{height: '30px'}}/>
         <Row>
-          <Button className={'centered'} onClick={this.tryCreateNewGoal}>
-            {this.props.editing ? 'Submit Changes' : 'New Goal'}
-          </Button>
+          <Col xs={2}>
+          </Col>
+          <Col xs={4}>
+            <Button onClick={this.props.editing || this.editing ? this.tryEditGoal : this.tryCreateNewGoal}>
+              {this.props.editing || this.editing ? 'Submit' : 'New Goal'}
+            </Button>
+          </Col>
+          <Col xs={4}>
+            <Button onClick={this.props.editing || this.editing ? this.tryDeleteGoal : () => this.props.history.push('/home')}>
+              {this.props.editing || this.editing ? 'Delete' : 'Home'}
+            </Button>
+          </Col>
+          <Col xs={2}>
+          </Col>
         </Row>
       </div>
     );
