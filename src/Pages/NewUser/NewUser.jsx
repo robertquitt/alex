@@ -7,6 +7,9 @@ import {Row} from 'yui-md/lib/Row';
 import {Col} from 'yui-md/lib/Col';
 import {Button} from 'yui-md/lib/Button';
 
+import {sexOptions, ageOptions, raceOptions, livingOptions,educationOptions,
+  workStatusOptions, citizenshipOptions, disabilityOptions} from './options';
+
 class NewUser extends React.Component {
   constructor() {
     super();
@@ -50,30 +53,6 @@ class NewUser extends React.Component {
               {this.state.newUserData.country}
             </Input>
           </Col>
-          <Col xs={12} sm={6}>
-            <Input label={'Race'}
-              changeValue={(newValue) => this.changeValue('race', newValue)}>
-              {this.state.newUserData.race}
-            </Input>
-          </Col>
-          <Col xs={12} sm={6}>
-            <Input label={'Family Situation'}
-              changeValue={(newValue) => this.changeValue('family', newValue)}>
-              {this.state.newUserData.housing}
-            </Input>
-          </Col>
-          <Col xs={6}>
-            <Input label={'Age'}
-              changeValue={(newValue) => this.changeValue('age', newValue)}>
-              {this.state.newUserData.age}
-            </Input>
-          </Col>
-          <Col xs={6}>
-            <Input label={'Gender'}
-              changeValue={(newValue) => this.changeValue('gender', newValue)}>
-              {this.state.newUserData.gender}
-            </Input>
-          </Col>
           <Col xs={6}>
             <Input label={'Income ($/month)'}
               changeValue={(newValue) => this.changeValue('income', newValue)}>
@@ -81,22 +60,68 @@ class NewUser extends React.Component {
             </Input>
           </Col>
           <Col xs={6}>
-            <Input label={'Education'}
-              changeValue={(newValue) => this.changeValue('education', newValue)}>
-              {this.state.newUserData.state}
-            </Input>
+            <Dropdown label={'Race'}
+              options={raceOptions}
+              setSelected={(newValue) => this.changeValue('race', newValue)}
+              selected={this.state.newUserData.race}>
+              {this.state.newUserData.race}
+            </Dropdown>
           </Col>
-          <Col xs={12}>
-            <Input label={'Citizenship'}
-              changeValue={(newValue) => this.changeValue('citizenship', newValue)}>
-              {this.state.newUserData.citizenship}
-            </Input>
+          <Col xs={6}>
+            <Dropdown label={'Family Situation'}
+              options={livingOptions}
+              setSelected={(newValue) => this.changeValue('family', newValue)}
+              selected={this.state.newUserData.family}>
+              {this.state.newUserData.family}
+            </Dropdown>
           </Col>
-          <Col xs={12}>
-            <Input label={'Work Status'}
-              changeValue={(newValue) => this.changeValue('workStatus', newValue)}>
+          <Col xs={6}>
+            <Dropdown label={'Age'}
+              options={ageOptions}
+              setSelected={(newValue) => this.changeValue('age', newValue)}
+              selected={this.state.newUserData.age}>
+              {this.state.newUserData.age}
+            </Dropdown>
+          </Col>
+          <Col xs={6}>
+            <Dropdown label={'Gender'}
+              options={sexOptions}
+              setSelected={(newValue) => this.changeValue('gender', newValue)}
+              selected={this.state.newUserData.gender}>
+              {this.state.newUserData.gender}
+            </Dropdown>
+          </Col>
+          <Col xs={6}>
+            <Dropdown label={'Education'}
+              options={educationOptions}
+              setSelected={(newValue) => this.changeValue('education', newValue)}
+              selected={this.state.newUserData.education}>
+              {this.state.newUserData.education}
+            </Dropdown>
+          </Col>
+          <Col xs={6}>
+            <Dropdown label={'Citizenship'}
+              options={citizenshipOptions}
+              setSelected={(newValue) => this.changeValue('citizenship', newValue)}
+              selected={this.state.newUserData.citizenship}>
               {this.state.newUserData.citizenship}
-            </Input>
+            </Dropdown>
+          </Col>
+          <Col xs={6}>
+            <Dropdown label={'Work Status'}
+              options={workStatusOptions}
+              setSelected={(newValue) => this.changeValue('workStatus', newValue)}
+              selected={this.state.newUserData.workStatus}>
+              {this.state.newUserData.workStatus}
+            </Dropdown>
+          </Col>
+          <Col xs={6}>
+            <Dropdown label={'Disability Status'}
+              options={disabilityOptions}
+              setSelected={(newValue) => this.changeValue('disability', newValue)}
+              selected={this.state.newUserData.disability}>
+              {this.state.newUserData.disability}
+            </Dropdown>
           </Col>
         </Row>
         <div style={{height: '30px'}}/>

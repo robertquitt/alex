@@ -50,3 +50,5 @@ var disabilityOptions = {
   yes: "With any disability",
   no: "No disability"
 }
+
+export {sexOptions, ageOptions, raceOptions, livingOptions,educationOptions, workStatusOptions, citizenshipOptions, disabilityOptions};

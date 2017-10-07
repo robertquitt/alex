@@ -20,6 +20,7 @@ class NewGoal extends React.Component {
     this.bindAllMethods();
     this.state = {
       newGoalData: {
+        type: 'personal'
       }
     };
     window.socket = window.socket || io('localhost:9080');

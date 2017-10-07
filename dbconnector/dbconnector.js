@@ -50,9 +50,26 @@ class DB {
   //Callback signature: function()
   addGoal(goal, callback) {
     this.mongoClient.connect(this.url, function(err, db) {
+      goal.id = new Date().getTime();
       db.collection('goals').insertOne(goal);
       db.close();
       callback();
+    });
+  }
+
+  //Callback signature: function(goal)
+  getGoal(goal, callback) {
+    this.mongoClient.connect(this.url, function(err, db) {
+      db.collection('goals').findOne({id: goal.id, userId: goal.userId}, {}).then((goal) => callback(goal));
+      db.close();
+      callback();
+    });
+  }
+
+  //Callback signature: function(goals)
+  getGoals(userId, callback) {
+    this.mongoClient.connect(this.url, function(err, db) {
+      db.collection('goals').find().toArray().then((goals) => callback(goals));
     });
   }
 

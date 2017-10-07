@@ -6,6 +6,9 @@ import {Row} from 'yui-md/lib/Row';
 import {Col} from 'yui-md/lib/Col';
 import {Button} from 'yui-md/lib/Button';
 
+import {sexOptions, ageOptions, raceOptions, livingOptions,educationOptions,
+  workStatusOptions, citizenshipOptions, disabilityOptions} from '../NewUser/options';
+
 class Home extends React.Component {
   constructor() {
     super();
@@ -36,19 +39,31 @@ class Home extends React.Component {
             <p className={'centered'}>Monthly Income: ${this.state.user.income || 0}</p>
           </Col>
           <Col xs={12}>
-            <p className={'centered'}>Age: {this.state.user.age || 'Unknown'}</p>
+            <p className={'centered'}>Age: {ageOptions[this.state.user.age] || 'Unknown'}</p>
           </Col>
           <Col xs={12}>
-            <p className={'centered'}>Gender: {this.state.user.gender || 'Unknown'}</p>
+            <p className={'centered'}>Gender: {sexOptions[this.state.user.gender] || 'Unknown'}</p>
           </Col>
           <Col xs={12}>
-            <p className={'centered'}>Race: {this.state.user.race || 'Unknown'}</p>
+            <p className={'centered'}>Race: {raceOptions[this.state.user.race] || 'Unknown'}</p>
+          </Col>
+          <div style={{height: '30px'}}/>
+          <Col xs={2}>
+          </Col>
+          <Col xs={4}>
+            <Button className={''} onClick={() => this.props.history.push('/newgoal')}>
+              New Goal
+            </Button>
+          </Col>
+          <Col xs={4}>
+            <Button className={''} onClick={() => this.props.history.push('/goals')}>
+              Goals
+            </Button>
+          </Col>
+          <Col xs={2}>
           </Col>
         </Row>
-        <div style={{height: '30px'}}/>
-        <Button className={'centered'} onClick={() => this.props.history.push('/newgoal')}>
-          New Goal
-        </Button>
+
       </div>
     );
   }

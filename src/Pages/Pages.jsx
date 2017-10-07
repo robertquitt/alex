@@ -13,6 +13,7 @@ import {LoginPage} from './LoginPage';
 import {NewUser} from './NewUser';
 import {Home} from './Home';
 import {NewGoal} from './NewGoal';
+import {Goals} from './Goals';
 
 class Pages extends React.Component {
   constructor() {
@@ -28,6 +29,7 @@ class Pages extends React.Component {
           <Route path='/newuser' component={NewUser}/>
           <Route path='/home' component={Home}/>
           <Route path='/newgoal' component={NewGoal}/>
+          <Route path='/goals' component={Goals}/>
           <Route path='/' component={LoginPage}/>
         </Switch>
       </div>

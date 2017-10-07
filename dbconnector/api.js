@@ -33,6 +33,14 @@ function addApi(server) {
         socket.emit('redirectHome', {});
       });
     });
+
+    socket.on('getGoals', function(data) {
+      var userId = data.userId;
+      console.log('getGoals');
+      db.getGoals(userId, (goals) => {
+        socket.emit('getGoals', {goals: goals});
+      });
+    });
   });
 }
 
