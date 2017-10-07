@@ -4,7 +4,8 @@ var transactionCategories = {
   gift: 'Gift',
   vacation: 'Vacation',
   food: 'Food',
-  impulse: 'Impulse'
+  impulse: 'Impulse',
+  bills: 'Bills'
 };
 
 export {transactionCategories};

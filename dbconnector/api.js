@@ -1,4 +1,5 @@
 import DB from './dbconnector.js';
+import {spawn} from 'child_process';
 var db = new DB();
 
 function addApi(server) {
@@ -15,9 +16,19 @@ function addApi(server) {
 
     socket.on('newUser', function(data) {
       var user = data;
-      db.addUser(user, () => {
-        socket.emit('redirectHome', {});
-      })
+      const riskScript = spawn('python3', [__dirname + '/../alexRiskFactor/calculatorScript.py', JSON.stringify(user)]);
+      riskScript.stdout.on('data', (data) => {
+        var riskJson = JSON.parse(data.toString('utf8'));
+        user.riskBelow100 = riskJson.riskBelow100;
+        user.riskBelow125 = riskJson.riskBelow125;
+        user.riskBelow50 = riskJson.riskBelow50;
+        db.addUser(user, () => {
+          socket.emit('redirectHome', {});
+        })
+      });
+      riskScript.stderr.on('data', (data) => {
+        console.log(data.toString('utf8'));
+      });
     });
 
     socket.on('getUser', function(data) {
@@ -87,7 +98,7 @@ function addApi(server) {
       db.deleteTransaction(transaction, () => {
         socket.emit('redirectTransactions', {});
       })
-    })
+    });
   });
 }
 

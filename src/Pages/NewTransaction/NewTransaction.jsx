@@ -78,7 +78,7 @@ class NewTransaction extends React.Component {
           </Col>
           <Col xs={6}>
             <Input label={'Cost'} value={this.state.newTransactionData.cost}
-              changeValue={(newValue) => this.changeValue('cost', newValue)}/>
+              changeValue={(newValue) => this.changeValue('cost', parseInt(newValue))}/>
           </Col>
           <Col xs={6}>
             <Dropdown label={'Type'} options={transactionCategories} selected={this.state.newTransactionData.type}

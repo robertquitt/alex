@@ -34,6 +34,7 @@ class Home extends React.Component {
         <h3 className={'centered'}>Welcome back, {this.state.user.name}</h3>
         <div style={{height: '10px'}}/>
         <h4 className={'centered'}>{this.state.user.country}</h4>
+        <h4 className={'centered'}>Risk Factor: {this.state.user.riskBelow125 && this.state.user.riskBelow125.toFixed(2)}%</h4>
         <Row>
           <Col xs={12}>
             <p className={'centered'}>Monthly Income: ${this.state.user.income || 0}</p>

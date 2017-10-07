@@ -75,6 +75,7 @@ class DB {
   //Callback signature: function()
   editGoal(goal, callback) {
     this.mongoClient.connect(this.url, function(err, db) {
+      delete goal._id;
       db.collection('goals').findOneAndReplace({id: goal.id, userId: goal.userId}, goal);
       db.close();
       callback();
@@ -117,6 +118,7 @@ class DB {
   //Callback signature: function()
   editTransaction(transaction, callback) {
     this.mongoClient.connect(this.url, function(err, db) {
+      delete transaction._id;
       db.collection('transactions').findOneAndReplace({id: transaction.id, userId: transaction.userId}, transaction);
       db.close();
       callback();
