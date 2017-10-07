@@ -7,6 +7,7 @@ class DB {
   constructor(url = defaultUrl) {
     this.url = url;
     this.mongoClient = mongoClient;
+    console.log(this.url);
 
     mongoClient.connect(this.url, function(err, db) {
       assert.equal(null, err);
