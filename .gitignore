@@ -1,0 +1,12 @@
+node_modules
+package-lock.json
+certs
+.DS_Store
+npm-debug.log
+public/bundle.css
+public/bundle.css.gz
+public/bundle.js
+public/bundle.js.gz
+deploy/*
+*.swp
+*.sw*
