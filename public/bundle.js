@@ -6853,7 +6853,7 @@ module.exports = function (it) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var iourl = 'localhost:80';
+var iourl = 'localhost:8080';
 
 exports.iourl = iourl;
 
@@ -22608,7 +22608,7 @@ var LoginButton = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (LoginButton.__proto__ || Object.getPrototypeOf(LoginButton)).call(this));
 
     _this.bindAllMethods();
-    window.socket = window.socket || (0, _socket2.default)('localhost:80');
+    window.socket = window.socket || (0, _socket2.default)('localhost:8080');
     return _this;
   }
 
@@ -49767,7 +49767,7 @@ var App = function (_React$Component) {
     value: function render() {
       return React.createElement(
         _reactFacebook2.default,
-        { appId: '1730518880590098' },
+        { appId: '173051888080590098' },
         React.createElement(
           _reactRedux.Provider,
           { store: store },
@@ -60857,7 +60857,7 @@ var LoginPage = function (_React$Component) {
           { className: 'centered' },
           'Your AI-Powered Financial Advisor'
         ),
-        React.createElement('div', { style: { height: '80px' } }),
+        React.createElement('div', { style: { height: '8080px' } }),
         React.createElement(_LoginButton.LoginButton, { verbose: true })
       );
     }

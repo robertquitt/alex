@@ -22239,7 +22239,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _require = __webpack_require__(82),
     spawn = _require.spawn;
 
-var port = 80;
+var port = 8080;
 
 global.window = {
   addEventListener: function addEventListener() {},

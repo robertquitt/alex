@@ -37,7 +37,7 @@ class LoginPage extends React.Component {
         <h4 className='centered'>
           Your AI-Powered Financial Advisor
         </h4>
-        <div style={{height: '80px'}}/>
+        <div style={{height: '8080px'}}/>
         <LoginButton verbose/>
       </div>
     );
