@@ -23,7 +23,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <FacebookProvider appId="805896649572423">
+      <FacebookProvider appId="1730518880590098">
         <Provider store={store}>
           <Route path={'/'}>
             <div className={'app-root'}>

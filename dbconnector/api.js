@@ -1,10 +1,19 @@
-var mongoClient = require('mongodb').MongoClient, assert = require('assert');
+import DB from './dbconnector.js';
+var db = new DB();
 
-var url = 'mongodb://mangoman:knave@ds064198.mlab.com:64198/project-alex';
+function addApi(server) {
+  var io = require('socket.io')(server);
 
-mongoClient.connect(url, function(err, db) {
-  assert.equal(null, err);
-  console.log('Connected successfully to server');
+  //On connection, bind to socket.
+  io.on('connection', function(socket) {
+    socket.on('checkUserExists', function(data) {
+      var id = data.id;
+      db.checkUserExists(id, (doesExist) => {
+        socket.emit('userExists', {exists: doesExist});
+      });
+    });
+  });
+}
 
-  db.close();
-});
+export default addApi;
+export {addApi};

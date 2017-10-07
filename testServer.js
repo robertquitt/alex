@@ -13,8 +13,9 @@ import {StaticRouter} from 'react-router';
 
 const { spawn } = require('child_process');
 
+import addApi from './dbconnector/api';
+
 var port = 9080;
-var legacyPort = 8080;
 
 global.window = {
   addEventListener: () => {},
@@ -73,3 +74,5 @@ app.get('*', sendBase);
 server.listen(port,
   () => console.log('Node/express test server started on port ' + port)
 );
+
+addApi(server);

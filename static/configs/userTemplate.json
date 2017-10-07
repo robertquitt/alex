@@ -1,4 +1,7 @@
 {
   "id": 123,
   "name": "Alex",
+  "country": "United States",
+  "age": 123,
+  "gender": "male"
 }

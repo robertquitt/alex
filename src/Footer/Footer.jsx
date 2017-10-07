@@ -21,7 +21,7 @@ class Footer extends React.Component {
       <StickyFooter className={this.className()}>
         Copyright © 2017 CSUA Hosers. All rights reserved.
         Designed by&nbsp;<a href={'https://www.csua.berkeley.edu/'}>
-          Eric Hou, Jonathan Tan, Robert Quitt, Ray Pan, Jesse Ou</a>.
+          Eric Hou, Robert Quitt, Jesse Ou, and Lulu Wang</a>.
       </StickyFooter>
     );
   }
