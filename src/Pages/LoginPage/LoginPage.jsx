@@ -11,7 +11,7 @@ class LoginPage extends React.Component {
   constructor() {
     super();
     this.bindAllMethods();
-    window.socket = window.socket || io('localhost:9080');
+    window.socket = window.socket || io('localhost:80');
     window.socket.on('userExists', (data) => {
       console.log(data);
       if (data.exists) {

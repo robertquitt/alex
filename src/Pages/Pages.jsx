@@ -14,6 +14,8 @@ import {NewUser} from './NewUser';
 import {Home} from './Home';
 import {NewGoal} from './NewGoal';
 import {Goals} from './Goals';
+import {NewTransaction} from './NewTransaction';
+import {Transactions} from './Transactions';
 
 class Pages extends React.Component {
   constructor() {
@@ -29,8 +31,11 @@ class Pages extends React.Component {
           <Route path='/newuser' component={NewUser}/>
           <Route path='/home' component={Home}/>
           <Route path='/newgoal' component={NewGoal}/>
+          <Route path='/newtransaction' component={NewTransaction}/>
           <Route path='/goals' component={Goals}/>
           <Route path='/goal/:id' component={NewGoal}/>
+          <Route path='/transactions' component={Transactions}/>
+          <Route path='/transaction/:id' component={NewTransaction}/>
           <Route path='/' component={LoginPage}/>
         </Switch>
       </div>

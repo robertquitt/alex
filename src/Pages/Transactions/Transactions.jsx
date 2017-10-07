@@ -7,7 +7,7 @@ import {Row} from 'yui-md/lib/Row';
 import {Col} from 'yui-md/lib/Col';
 import {Button} from 'yui-md/lib/Button';
 
-class Goals extends React.Component {
+class Transactions extends React.Component {
   constructor() {
     super();
     this.bindAllMethods();
@@ -16,46 +16,43 @@ class Goals extends React.Component {
       this.props.history.push('/home');
     });
     this.state = {
-      goals: []
+      transactions: []
     };
-    window.socket.emit('getGoals', {userId: FB.getUserID()});
-    window.socket.on('getGoals', (data) => {
-      console.log(data.goals);
-      this.setState({goals: data.goals});
+    window.socket.emit('getTransactions', {userId: FB.getUserID()});
+    window.socket.on('getTransactions', (data) => {
+      this.setState({transactions: data.transactions});
     });
   }
 
-
-  getGoalComponents(goals) {
-    console.log('hello');
-    var goalComponents = []
-    for (var i in goals) {
-      var goal = goals[i];
-      goalComponents.push(
+  getTransactionComponents(transactions) {
+    var transactionComponents = []
+    for (var i in transactions) {
+      var transaction = transactions[i];
+      transactionComponents.push(
         <Card key={i}>
-          <CardTextArea onClick={() => this.props.history.push('/goal/' + goal.id)}>
+          <CardTextArea onClick={() => this.props.history.push('/transaction/' + transaction.id)}>
             <div>
               <p>
-                <b>Goal: </b>{goal.goal}&emsp;&emsp;&emsp;
-                <b>Type: </b>{goal.type}&emsp;&emsp;&emsp;
-                <b>Cost: </b>{goal.cost}&emsp;&emsp;&emsp;
+                <b>Transaction: </b>{transaction.transaction}&emsp;&emsp;&emsp;
+                <b>Type: </b>{transaction.type}&emsp;&emsp;&emsp;
+                <b>Cost: </b>{transaction.cost}&emsp;&emsp;&emsp;
               </p>
             </div>
           </CardTextArea>
         </Card>
       );
     }
-    return goalComponents;
+    return transactionComponents;
   }
 
   render() {
     return (
-      <div className={'goals'}>
-        <h3 className={'centered'}>Goals</h3>
+      <div className={'transactions'}>
+        <h3 className={'centered'}>Transactions</h3>
         <Row>
           <Col xs={0} sm={2}/>
           <Col xs={12} sm={8}>
-            {this.getGoalComponents(this.state.goals)}
+            {this.getTransactionComponents(this.state.transactions)}
           </Col>
           <Col xs={0} sm={2}/>
         </Row>
@@ -75,7 +72,7 @@ class Goals extends React.Component {
 }
 
 
-Goals = withRouter(Guac(Goals));
+Transactions = withRouter(Guac(Transactions));
 
-export default Goals;
-export {Goals};
+export default Transactions;
+export {Transactions};

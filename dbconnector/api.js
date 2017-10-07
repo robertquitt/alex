@@ -66,8 +66,8 @@ function addApi(server) {
     });
     socket.on('getTransactions', function(data) {
       var userId = data.userId;
-      db.getTransactions(userId, (goals) => {
-        socket.emit('getTransactions', {goals: goals});
+      db.getTransactions(userId, (transactions) => {
+        socket.emit('getTransactions', {transactions: transactions});
       });
     });
     socket.on('getTransaction', function(data) {

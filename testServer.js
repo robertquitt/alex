@@ -15,7 +15,7 @@ const { spawn } = require('child_process');
 
 import addApi from './dbconnector/api';
 
-var port = 9080;
+var port = 80;
 
 global.window = {
   addEventListener: () => {},

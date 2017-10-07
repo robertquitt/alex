@@ -3,5 +3,6 @@
   "userId": 123,
   "timestamp": "2017-10-06T23:43:06.900",
   "amount": 123,
+  "type": "personal",
   "tags": []
 }

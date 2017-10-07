@@ -67,7 +67,9 @@ class DB {
   //Callback signature: function(goals)
   getGoals(userId, callback) {
     this.mongoClient.connect(this.url, function(err, db) {
-      db.collection('goals').find().toArray().then((goals) => callback(goals));
+      db.collection('goals').find({userId: userId}).toArray().then((goals) => callback(goals));
+      db.close();
+      callback();
     });
   }
   //Callback signature: function()
@@ -107,7 +109,9 @@ class DB {
   //Callback signature: function(goals)
   getTransactions(userId, callback) {
     this.mongoClient.connect(this.url, function(err, db) {
-      db.collection('transactions').find().toArray().then((goals) => callback(goals));
+      db.collection('transactions').find({userId: userId}).toArray().then((transactions) => callback(transactions));
+      db.close();
+      callback();
     });
   }
   //Callback signature: function()

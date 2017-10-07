@@ -18,7 +18,7 @@ class NewUser extends React.Component {
       newUserData: {
       }
     };
-    window.socket = window.socket || io('localhost:9080');
+    window.socket = window.socket || io('localhost:80');
     window.socket.on('redirectHome', (data) => {
       this.props.history.push('/home');
     });
@@ -44,20 +44,16 @@ class NewUser extends React.Component {
         <p className={'centered title'}>Please enter this info for the best experience</p>
         <Row>
           <Col xs={12}>
-            <Input label={'Name'} changeValue={(newValue) => this.changeValue('name', newValue)}>
-              {this.state.newUserData.name}
-            </Input>
+            <Input label={'Name'} value={this.state.newUserData.name}
+              changeValue={(newValue) => this.changeValue('name', newValue)}/>
           </Col>
           <Col xs={12} sm={6}>
-            <Input label={'Country'} changeValue={(newValue) => this.changeValue('country', newValue)}>
-              {this.state.newUserData.country}
-            </Input>
+            <Input label={'Country'} value={this.state.newUserData.country}
+              changeValue={(newValue) => this.changeValue('country', newValue)}/>
           </Col>
           <Col xs={6}>
-            <Input label={'Income ($/month)'}
-              changeValue={(newValue) => this.changeValue('income', newValue)}>
-              {this.state.newUserData.income}
-            </Input>
+            <Input label={'Income ($/month)'} value={this.state.newUserData.income}
+              changeValue={(newValue) => this.changeValue('income', newValue)}/>
           </Col>
           <Col xs={6}>
             <Dropdown label={'Race'}

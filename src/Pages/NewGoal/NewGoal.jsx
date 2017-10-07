@@ -18,7 +18,7 @@ class NewGoal extends React.Component {
   constructor(props) {
     super(props);
     this.bindAllMethods();
-    window.socket = window.socket || io('localhost:9080');
+    window.socket = window.socket || io('localhost:80');
     window.socket.on('redirectHome', (data) => {
       this.props.history.push('/home');
     });
@@ -90,7 +90,7 @@ class NewGoal extends React.Component {
           </Col>
           <Col xs={4}>
             <Button onClick={this.props.editing || this.editing ? this.tryEditGoal : this.tryCreateNewGoal}>
-              {this.props.editing || this.editing ? 'Submit' : 'New Goal'}
+              {this.props.editing || this.editing ? 'Submit' : 'Create'}
             </Button>
           </Col>
           <Col xs={4}>

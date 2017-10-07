@@ -13,7 +13,7 @@ class Home extends React.Component {
   constructor() {
     super();
     this.bindAllMethods();
-    window.socket = window.socket || io('localhost:9080');
+    window.socket = window.socket || io('localhost:80');
     window.socket.on('redirectHome', (data) => {
       this.props.history.push('/home');
     });
@@ -58,6 +58,20 @@ class Home extends React.Component {
           <Col xs={4}>
             <Button className={''} onClick={() => this.props.history.push('/goals')}>
               Goals
+            </Button>
+          </Col>
+          <Col xs={2}>
+          </Col>
+          <Col xs={2}>
+          </Col>
+          <Col xs={4}>
+            <Button className={''} onClick={() => this.props.history.push('/newtransaction')}>
+              New Transaction
+            </Button>
+          </Col>
+          <Col xs={4}>
+            <Button className={''} onClick={() => this.props.history.push('/transactions')}>
+              Transactions
             </Button>
           </Col>
           <Col xs={2}>

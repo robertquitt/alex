@@ -12,6 +12,7 @@
   "dependencies": {
     "animated-scroll-to": "^1.1.5",
     "body-parser": "^1.18.1",
+    "chart.js": "^2.7.0",
     "express": "^4.15.4",
     "guac-hoc": "^0.1.0",
     "moment": "^2.18.1",
