@@ -12,6 +12,27 @@ function addApi(server) {
         socket.emit('userExists', {exists: doesExist});
       });
     });
+
+    socket.on('newUser', function(data) {
+      var user = data;
+      db.addUser(user, () => {
+        socket.emit('redirectHome', {});
+      })
+    });
+
+    socket.on('getUser', function(data) {
+      var id = data.id;
+      db.getUser(id, (user) => {
+        socket.emit('getUser', user);
+      });
+    });
+
+    socket.on('newGoal', function(data) {
+      var goal = data;
+      db.addGoal(goal, () => {
+        socket.emit('redirectHome', {});
+      });
+    });
   });
 }
 

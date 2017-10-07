@@ -3,5 +3,11 @@
   "name": "Alex",
   "country": "United States",
   "age": 123,
-  "gender": "male"
+  "gender": "male",
+  "race": "Asian",
+  "family": "regularFamily",
+  "education": "hs",
+  "citizenship": "native",
+  "disability": false,
+  "work": "fullTime"
 }
