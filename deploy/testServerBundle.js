@@ -22236,6 +22236,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var assert = __webpack_require__(202);
+
 var _require = __webpack_require__(82),
     spawn = _require.spawn;
 
@@ -22295,8 +22297,15 @@ app.use(_express2.default.static('./public'));
 
 app.get('*', sendBase);
 
-server.listen(port, function () {
-  return console.log('Node/express test server started on port ' + port);
+var defaultUrl = 'mongodb://mangoman2:knave@ds064198.mlab.com:64198/project-alex';
+
+_mongodb.MongoClient.connect(defaultUrl, function (err, db) {
+  assert.equal(null, err);
+  console.log('Connected successfully to database');
+
+  server.listen(port, function () {
+    return console.log('Node/express test server started on port ' + port);
+  });
 });
 
 (0, _api2.default)(server);
