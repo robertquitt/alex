@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel server.js && node server.js",
-    "watch": "babel -w src -d lib --copy-files"
+    "start": "webpack && node deploy/testServerBundle.js"
   },
   "author": "",
   "license": "ISC",
