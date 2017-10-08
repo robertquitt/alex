@@ -22444,7 +22444,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var mongoClient = __webpack_require__(81).MongoClient,
     assert = __webpack_require__(202);
 
-var defaultUrl = 'mongodb://mangoman2:knave@ds064198.mlab.com:64198/project-alex';
+var defaultUrl = 'mongodb://mangoman:knave@ds123182.mlab.com:23182/alex-gcloud';
 
 var DB = function () {
   function DB() {

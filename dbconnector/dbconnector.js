@@ -1,7 +1,7 @@
 const mongoClient = require('mongodb').MongoClient,
       assert = require('assert');
 
-const defaultUrl = 'mongodb://mangoman2:knave@ds064198.mlab.com:64198/project-alex';
+const defaultUrl = 'mongodb://mangoman:knave@ds123182.mlab.com:23182/alex-gcloud';
 
 class DB {
   constructor(url = defaultUrl) {
