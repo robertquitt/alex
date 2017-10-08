@@ -1,7 +1,6 @@
 import express from 'express';
 import favicon from 'serve-favicon';
 import {MongoClient, ObjectID} from 'mongodb';
-const assert = require('assert');
 import fs from 'fs';
 import path from 'path';
 import zlib from 'zlib';
@@ -72,15 +71,8 @@ app.use(express.static('./public'));
 
 app.get('*', sendBase);
 
-const defaultUrl = 'mongodb://mangoman2:knave@ds064198.mlab.com:64198/project-alex';
-
-MongoClient.connect(defaultUrl, function(err, db) {
-  assert.equal(null, err);
-  console.log('Connected successfully to database');
-
-  server.listen(port,
-    () => console.log('Node/express test server started on port ' + port)
-  );
-});
+server.listen(port,
+  () => console.log('Node/express test server started on port ' + port)
+);
 
 addApi(server);
