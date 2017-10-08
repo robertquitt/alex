@@ -60857,7 +60857,7 @@ var LoginPage = function (_React$Component) {
           { className: 'centered' },
           'Your AI-Powered Financial Advisor'
         ),
-        React.createElement('div', { style: { height: '8080px' } }),
+        React.createElement('div', { style: { height: '80px' } }),
         React.createElement(_LoginButton.LoginButton, { verbose: true })
       );
     }
